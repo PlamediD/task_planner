@@ -13,11 +13,11 @@ Uses Floor for storage
 
 ## Features I am aiming to implement 
 
-Task Creation: Users can create and organize tasks by entering a task title, description, due date, priority level, and tags.
-Task List: Display a list of tasks with relevant details, such as title, due date, and priority level.
-Task Sorting and Filtering: Implement options to sort tasks based on the due date, priority, status, or alphabetical order. Include filters to show tasks based on their tags or completion status.
-Task Status Tracking: Enable users to mark tasks as completed or in progress and visually indicate their status.
-Task Categories: Implement the ability to create categories or projects to group related tasks together( based on their tags).
+###### 1. Task Creation: Users can create and organize tasks by entering a task title, description, due date, priority level, and tags.
+###### 2.Task List: Display a list of tasks with relevant details, such as title, due date, and priority level.
+###### 3.Task Sorting and Filtering: Implement options to sort tasks based on the due date, priority, status, or alphabetical order. Include filters to show tasks based on their tags or completion status.
+###### 4.Task Status Tracking: Enable users to mark tasks as completed or in progress and visually indicate their status.
+###### 5.Task Categories: Implement the ability to create categories or projects to group related tasks together( based on their tags).
 
 
 
