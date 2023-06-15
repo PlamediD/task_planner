@@ -1,6 +1,15 @@
 # task_planner
 
-A new Flutter project.
+Author: Plamedi Diakubama
+Start Date: 6/14/2023
+Project: Task Planner app
+Task Tracker is a productivity app that helps users organize and manage their daily tasks.
+It provides a user-friendly interface with intuitive features to enhance productivity and efficiency.
+Description: This defines a task.
+Each task includes a title, description, due date, priority level, status, and tags.
+Priority goes from 0-3 ( with 0 being the less urgent and 3 being the most urgent)
+status can be either 'not started' , 'in progress' or 'done' 
+Uses Floor for storage
 
 ## Getting Started
 
