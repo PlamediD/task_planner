@@ -1,8 +1,8 @@
 # task_planner
 
 Author: Plamedi Diakubama
-Start Date: 6/14/2023
-Project: Task Planner app
+#### Start Date: 6/14/2023
+#### Project: Task Planner app
 Task Tracker is a productivity app that helps users organize and manage their daily tasks.
 It provides a user-friendly interface with intuitive features to enhance productivity and efficiency.
 Description: This defines a task.
