@@ -6,10 +6,10 @@
 Task Tracker is a productivity app that helps users organize and manage their daily tasks.
 It provides a user-friendly interface with intuitive features to enhance productivity and efficiency.
 Description: This defines a task.
-Each task includes a title, description, due date, priority level, status, and tags.
-Priority goes from 0-3 ( with 0 being the less urgent and 3 being the most urgent)
-status can be either 'not started', 'in progress, or 'done' 
-Uses Floor for storage
+###### Each task includes a title, description, due date, priority level, status, and tags.
+###### Priority goes from 0-3 ( with 0 being the less urgent and 3 being the most urgent)
+###### status can be either 'not started', 'in progress, or 'done' 
+###### Uses Floor for storage
 
 ## Features I am aiming to implement 
 
@@ -23,11 +23,10 @@ Uses Floor for storage
 
 ### Additional Challenges (for advanced learning):
 
-Dark Mode: Implement a dark mode feature to provide a different visual theme for users.
-Task Sharing: Allow users to share tasks or collaborate on tasks with other app users.
-Task Reminders: Allow users to set reminders for important tasks to receive notifications at specified times or intervals.
-Data Persistence: Implement local data storage using a database or file storage system for offline functionality.
-Analytics: Include analytics tracking to gather insights into user behavior and app usage patterns.
-Data Synchronization: Implement data synchronization across devices using a backend server or cloud service, allowing users to access their tasks from multiple devices.
+###### 1.Dark Mode: Implement a dark mode feature to provide a different visual theme for users.
+###### 2.Task Sharing: Allow users to share tasks or collaborate on tasks with other app users.
+###### 3.Task Reminders: Allow users to set reminders for important tasks to receive notifications at specified times or intervals.
+###### 5.Analytics: Include analytics tracking to gather insights into user behavior and app usage patterns.
+###### 6.Data Synchronization: Implement data synchronization across devices using a backend server or cloud service, allowing users to access their tasks from multiple devices.
 
 
