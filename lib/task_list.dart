@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'task_view_model.dart';
 import 'delete.dart';
+import 'updateStatus.dart';
 
 class TaskList extends StatefulWidget {
   @override
@@ -18,14 +19,15 @@ class _TaskListState extends State<TaskList> {
 
     return Consumer<TaskViewModel>(
       builder: (context, taskViewModel, child) {
-        final tasks = showAllTasks ? taskViewModel.tasks : taskViewModel.getTodayTasks();
+        final tasks =
+        showAllTasks ? taskViewModel.tasks : taskViewModel.getTodayTasks();
 
         if (tasks.isEmpty) {
           return Center(
             child: Text('No tasks'),
           );
         } else {
-          tasks.sort((a, b) => b.priority.compareTo(a.priority)); // Sort tasks by priority in descending order
+          tasks.sort((a, b) => b.priority.compareTo(a.priority));
 
           return Column(
             children: [
@@ -66,19 +68,37 @@ class _TaskListState extends State<TaskList> {
                           ),
                         ],
                       ),
-                      trailing: IconButton(
-                        icon: Icon(Icons.delete),
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) => DeleteTaskDialog(
-                              taskTitle: task.title,
-                              onConfirmDelete: () {
-                                taskViewModel.deleteTask(task); // Delete the task
-                              },
-                            ),
-                          );
-                        },
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.delete),
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => DeleteTaskDialog(
+                                  taskTitle: task.title,
+                                  onConfirmDelete: () {
+                                    taskViewModel.deleteTask(task);
+                                  },
+                                ),
+                              );
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.info),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => statusTracker(
+                                    taskIndex: index,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ],
                       ),
                     );
                   },

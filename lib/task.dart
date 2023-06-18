@@ -11,7 +11,7 @@ Uses Floor for storage
  */
 
 import 'package:floor/floor.dart';
-import 'package:flutter/foundation.dart';
+
 
 @entity
 class Task {
@@ -22,7 +22,7 @@ class Task {
   final String description;
   final int priority;
   final String tags;
-  final String status;
+  String status;
 
 
   @ColumnInfo(name: 'due_date_time')

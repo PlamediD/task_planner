@@ -23,17 +23,17 @@ class TaskViewModel extends ChangeNotifier {
   }
 
   Future<bool> addTask(Task task) async {
-    final existingTasks= _tasks.where(
+    final existingTasks = _tasks.where(
           (e) => e.title == task.title && e.dueDateTime == task.dueDateTime,
     ).toList();
 
     if (existingTasks.isNotEmpty) {
       // Event(s) with the same title and start date/time already exist
       return false;
-    }
-    else {
+    } else {
+      task.status = 'Not Started'; // Set the default status
       await _taskDao.insertTask(task);
-      _tasks.add(task); // Add the event to the local list
+      _tasks.add(task); // Add the task to the local list
       notifyListeners();
 
       return true;
@@ -41,12 +41,33 @@ class TaskViewModel extends ChangeNotifier {
   }
 
 
+  Task getTaskByIndex(int index) {
+    if (index >= 0 && index < _tasks.length) {
+      final tasks = _tasks[index];
+
+
+      return tasks;
+    } else {
+      throw Exception('Invalid task index');
+    }
+  }
+
   Future<void> deleteTask(Task task ) async {
     await _taskDao.deleteTask(task);
     _tasks.remove(task);
     //_events = await _eventDao.getEventsInChronologicalOrder();
     notifyListeners();
   }
+
+  void updateTaskStatus(int index, String status) {
+    if (index >= 0 && index < _tasks.length) {
+      _tasks[index].status = status;
+      notifyListeners();
+    } else {
+      throw Exception('Invalid task index');
+    }
+  }
+
 
   List<Task> getTodayTasks(){
     final currentDate = DateTime.now();
@@ -63,7 +84,7 @@ class TaskViewModel extends ChangeNotifier {
         dueDateTime: DateTime.now(),
         tags: 'work',
         priority:0,
-        status:'not started',
+        status:'Not started',
 
       ),
 
@@ -73,7 +94,7 @@ class TaskViewModel extends ChangeNotifier {
         dueDateTime: DateTime.now(),
         tags: 'work',
         priority:1,
-        status:'not started',
+        status:'Not started',
 
       ),
       Task(
@@ -82,7 +103,7 @@ class TaskViewModel extends ChangeNotifier {
         dueDateTime: DateTime.now().add(Duration(days: 1)),
         tags: 'work',
         priority:0,
-        status:'not started',
+        status:'Not started',
 
       ),
       Task(
@@ -91,7 +112,7 @@ class TaskViewModel extends ChangeNotifier {
         dueDateTime: DateTime.now().add(Duration(days: 2)),
         tags: 'work',
         priority:1,
-        status:'not started',
+        status:'Not started',
       ),
 
     ];
