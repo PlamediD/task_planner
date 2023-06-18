@@ -90,7 +90,7 @@ class TaskViewModel extends ChangeNotifier {
   void addSampleTasks() async {
     final sampleTasks = [
       Task(
-        title: 'Task 0',
+        title: 'Task 9',
         description: 'testing taks 0 ',
         dueDateTime: DateTime.now(),
         tags: 'work',
@@ -100,29 +100,29 @@ class TaskViewModel extends ChangeNotifier {
       ),
 
       Task(
-        title: 'Task 00',
+        title: 'Task 8',
         description: 'testing taks 00 ',
         dueDateTime: DateTime.now(),
+        tags: 'work',
+        priority:2,
+        status:'Not started',
+
+      ),
+      Task(
+        title: 'Task 10',
+        description: 'testing taks 1 ',
+        dueDateTime: DateTime.now().add(Duration(days: 1)),
         tags: 'work',
         priority:1,
         status:'Not started',
 
       ),
       Task(
-        title: 'Task 1',
-        description: 'testing taks 1 ',
-        dueDateTime: DateTime.now().add(Duration(days: 1)),
-        tags: 'work',
-        priority:0,
-        status:'Not started',
-
-      ),
-      Task(
-        title: 'Task 2',
+        title: 'Task 5',
         description: 'testing task 2',
         dueDateTime: DateTime.now().add(Duration(days: 2)),
         tags: 'work',
-        priority:3,
+        priority:0,
         status:'Not started',
       ),
 

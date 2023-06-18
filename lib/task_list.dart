@@ -25,6 +25,7 @@ class TaskList extends StatefulWidget {
 
 class _TaskListState extends State<TaskList> {
   bool showAllTasks = false;
+  int selectedPriority = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -32,15 +33,23 @@ class _TaskListState extends State<TaskList> {
 
     return Consumer<TaskViewModel>(
       builder: (context, taskViewModel, child) {
-        final tasks =
-        showAllTasks ? taskViewModel.tasks : taskViewModel.getTodayTasks();
+        final tasks = showAllTasks
+            ? taskViewModel.tasks
+            : taskViewModel.getTodayTasks();
+        final filteredTasks = tasks.where((task) {
+          if (selectedPriority == 0) {
+            return true; // Display all tasks
+          } else {
+            return task.priority == selectedPriority; // Display tasks with the selected priority
+          }
+        }).toList();
 
-        if (tasks.isEmpty) {
+        if (filteredTasks.isEmpty) {
           return Center(
             child: Text('No tasks'),
           );
         } else {
-          tasks.sort((a, b) => b.priority.compareTo(a.priority));
+          filteredTasks.sort((a, b) => b.priority.compareTo(a.priority));
 
           return Column(
             children: [
@@ -60,15 +69,42 @@ class _TaskListState extends State<TaskList> {
                       ),
                     ),
                   ),
+                  DropdownButton<int>(
+                    value: selectedPriority,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedPriority = value!;
+                      });
+                    },
+                    items: [
+                      DropdownMenuItem<int>(
+                        value: 0,
+                        child: Text('All Priority'),
+                      ),
+
+                      DropdownMenuItem<int>(
+                        value: 1,
+                        child: Text('Priority 1'),
+                      ),
+                      DropdownMenuItem<int>(
+                        value: 2,
+                        child: Text('Priority 2'),
+                      ),
+                      DropdownMenuItem<int>(
+                        value: 3,
+                        child: Text('Priority 3'),
+                      ),
+                    ],
+                  ),
                 ],
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: tasks.length,
+                  itemCount: filteredTasks.length,
                   itemBuilder: (context, index) {
-                    final task = tasks[index];
+                    final task = filteredTasks[index];
                     final isHighPriority = task.priority == 3;
-                    final isDone=task.status=='Done';
+                    final isDone = task.status == 'Done';
 
                     return ListTile(
                       title: Text(task.title),
@@ -102,9 +138,7 @@ class _TaskListState extends State<TaskList> {
                             },
                           ),
                           IconButton(
-
-
-                          icon: isDone ? Icon(Icons.done) : Icon(Icons.info),
+                            icon: isDone ? Icon(Icons.check_circle) : Icon(Icons.info),
                             onPressed: () {
                               Navigator.push(
                                 context,
@@ -116,19 +150,16 @@ class _TaskListState extends State<TaskList> {
                               );
                             },
                           ),
-                          if (isHighPriority) // Show icon for high priority tasks
+                          if (isHighPriority)
                             Icon(
                               Icons.priority_high,
                               color: Colors.red,
                             ),
-
-
                         ],
                       ),
                     );
                   },
                 ),
-
               ),
             ],
           );
