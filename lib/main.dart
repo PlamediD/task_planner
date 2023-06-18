@@ -21,7 +21,7 @@ GoRouter router = GoRouter(
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Initialize the database
-  final database = await $FloorTaskDatabase.databaseBuilder('task_database.db').build();
+  final database = await $FloorTaskDatabase.databaseBuilder('task_database2.db').build();
 
   runApp(MyApp(database: database));
 }
@@ -61,10 +61,50 @@ class TaskListScreen extends StatelessWidget {
       body: TaskList(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          //context.read<TaskViewModel>().addSampleTasks();
+          context.read<TaskViewModel>().addSampleTasks();
         },
         child: Icon(Icons.add),
       ),
     );
   }
 }
+
+/*
+class TaskListScreen extends StatefulWidget {
+  @override
+  _TaskListScreenState createState() => _TaskListScreenState();
+}
+
+class _TaskListScreenState extends State<TaskListScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Task List'),
+      ),
+      body: TaskList(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            context.read<TaskViewModel>().addSampleTasks();
+          });
+        },
+        child: Icon(Icons.add),
+      ),
+      persistentFooterButtons: [
+        TextButton(
+          onPressed: () {
+            setState(() {
+              context.read<TaskListState>().showAllTasks = !context.read<TaskListState>().showAllTasks;
+            });
+          },
+          child: Text(
+            context.watch<TaskListState>().showAllTasks ? "Show Today's Tasks" : 'Show All Tasks',
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+ */

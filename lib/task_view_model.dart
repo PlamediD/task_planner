@@ -40,8 +40,42 @@ class TaskViewModel extends ChangeNotifier {
     }
   }
 
+
+  Future<void> deleteTask(Task task ) async {
+    await _taskDao.deleteTask(task);
+    _tasks.remove(task);
+    //_events = await _eventDao.getEventsInChronologicalOrder();
+    notifyListeners();
+  }
+
+  List<Task> getTodayTasks(){
+    final currentDate = DateTime.now();
+    final todayStart = DateTime(currentDate.year, currentDate.month, currentDate.day);
+    final todayEnd = todayStart.add(Duration(days: 1));
+    return _tasks.where((task) => task.dueDateTime.isAfter(todayStart) && task.dueDateTime.isBefore(todayEnd)).toList();
+  }
+
   void addSampleTasks() async {
     final sampleTasks = [
+      Task(
+        title: 'Task 0',
+        description: 'testing taks 0 ',
+        dueDateTime: DateTime.now(),
+        tags: 'work',
+        priority:0,
+        status:'not started',
+
+      ),
+
+      Task(
+        title: 'Task 00',
+        description: 'testing taks 00 ',
+        dueDateTime: DateTime.now(),
+        tags: 'work',
+        priority:1,
+        status:'not started',
+
+      ),
       Task(
         title: 'Task 1',
         description: 'testing taks 1 ',
