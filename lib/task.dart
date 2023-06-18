@@ -9,7 +9,6 @@ Each task includes task title/name, description, due date, priority level, and t
 Priority goes from 0-3 ( with 0 being the less urgent and 3 being the most urgent)
 Uses Floor for storage
  */
-
 import 'package:floor/floor.dart';
 
 

@@ -1,10 +1,20 @@
+/*
+Author: Plamedi Diakubama
+Date: 6/17/2023
+Project: Task Planner app
+Task Tracker is a productivity app that helps users organize and manage their daily tasks.
+It provides a user-friendly interface with intuitive features to enhance productivity and efficiency.
+Description: This is the main file
+ */
+
+
 import 'package:flutter/material.dart';
 import 'task_list.dart';
 import 'package:provider/provider.dart';
 import 'task_view_model.dart';
 import 'task_database.dart';
 import 'package:go_router/go_router.dart';
-import 'task.dart';
+
 
 GoRouter router = GoRouter(
   initialLocation: '/home',

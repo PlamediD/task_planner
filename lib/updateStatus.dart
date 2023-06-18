@@ -1,3 +1,14 @@
+/*
+Author: Plamedi Diakubama
+Date: 6/17/2023
+Project: Task Planner app
+Task Tracker is a productivity app that helps users organize and manage their daily tasks.
+It provides a user-friendly interface with intuitive features to enhance productivity and efficiency.
+Description: This file is responsible for updating task.status
+User is provided with the three viable options 'Not started' , 'Done', 'In progress'
+and they can select the one they want. Once selected, the status of the task will be updated on the screen
+ */
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'task_view_model.dart';

@@ -1,3 +1,15 @@
+/*
+Author: Plamedi Diakubama
+Date: 6/17/2023
+Project: Task Planner app
+Task Tracker is a productivity app that helps users organize and manage their daily tasks.
+It provides a user-friendly interface with intuitive features to enhance productivity and efficiency.
+Description: This file is responsible for delete.
+It allows the user to delete any specific task of their choice.
+
+ */
+
+
 import 'package:flutter/material.dart';
 
 
