@@ -17,7 +17,7 @@ It provides a user-friendly interface with intuitive features to enhance product
 ###### 2.Task List: Display a list of tasks with relevant details, such as title, due date, and priority level.
 ###### 3.Task Sorting and Filtering: Implement options to sort tasks based on the due date, priority, status, or alphabetical order. Include filters to show tasks based on their tags or completion status.
 ###### 4.Task Status Tracking: Enable users to mark tasks as completed or in progress and visually indicate their status.
-###### 5.Task Categories: Implement the ability to create categories or projects to group related tasks together( based on their tags).
+###### 5.Task Categories: Implement the ability to create categories or projects to group related tasks together( based on their tags). will limit it to 3 for simplicity: work, household, personal
 
 
 
