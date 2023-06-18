@@ -23,9 +23,15 @@ class TaskList extends StatefulWidget {
   _TaskListState createState() => _TaskListState();
 }
 
+enum SortingOption {
+  Priority,
+  DueDateTime,
+}
+
 class _TaskListState extends State<TaskList> {
   bool showAllTasks = false;
   int selectedPriority = 0;
+  SortingOption selectedSortingOption = SortingOption.Priority;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +55,13 @@ class _TaskListState extends State<TaskList> {
             child: Text('No tasks'),
           );
         } else {
-          filteredTasks.sort((a, b) => b.priority.compareTo(a.priority));
+          filteredTasks.sort((a, b) {
+            if (selectedSortingOption == SortingOption.Priority) {
+              return b.priority.compareTo(a.priority);
+            } else {
+              return a.dueDateTime.compareTo(b.dueDateTime);
+            }
+          });
 
           return Column(
             children: [
@@ -81,7 +93,6 @@ class _TaskListState extends State<TaskList> {
                         value: 0,
                         child: Text('All Priority'),
                       ),
-
                       DropdownMenuItem<int>(
                         value: 1,
                         child: Text('Priority 1'),
@@ -93,6 +104,24 @@ class _TaskListState extends State<TaskList> {
                       DropdownMenuItem<int>(
                         value: 3,
                         child: Text('Priority 3'),
+                      ),
+                    ],
+                  ),
+                  DropdownButton<SortingOption>(
+                    value: selectedSortingOption,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedSortingOption = value!;
+                      });
+                    },
+                    items: [
+                      DropdownMenuItem<SortingOption>(
+                        value: SortingOption.Priority,
+                        child: Text('Sort by Priority'),
+                      ),
+                      DropdownMenuItem<SortingOption>(
+                        value: SortingOption.DueDateTime,
+                        child: Text('Sort by Due Date'),
                       ),
                     ],
                   ),
@@ -138,7 +167,7 @@ class _TaskListState extends State<TaskList> {
                             },
                           ),
                           IconButton(
-                            icon: isDone ? Icon(Icons.check_circle) : Icon(Icons.info),
+                            icon: isDone ? Icon(Icons.done) : Icon(Icons.info),
                             onPressed: () {
                               Navigator.push(
                                 context,
