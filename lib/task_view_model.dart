@@ -41,6 +41,7 @@ class TaskViewModel extends ChangeNotifier {
       return false;
     } else {
       task.status = 'Not Started'; // Set the default status
+      //task.priority = priority;
       await _taskDao.insertTask(task);
       _tasks.add(task); // Add the task to the local list
       notifyListeners();
@@ -78,6 +79,7 @@ class TaskViewModel extends ChangeNotifier {
   }
 
 
+
   List<Task> getTodayTasks(){
     final currentDate = DateTime.now();
     final todayStart = DateTime(currentDate.year, currentDate.month, currentDate.day);
@@ -92,7 +94,7 @@ class TaskViewModel extends ChangeNotifier {
         description: 'testing taks 0 ',
         dueDateTime: DateTime.now(),
         tags: 'work',
-        priority:0,
+        priority:3,
         status:'Not started',
 
       ),
@@ -120,7 +122,7 @@ class TaskViewModel extends ChangeNotifier {
         description: 'testing task 2',
         dueDateTime: DateTime.now().add(Duration(days: 2)),
         tags: 'work',
-        priority:1,
+        priority:3,
         status:'Not started',
       ),
 

@@ -67,6 +67,9 @@ class _TaskListState extends State<TaskList> {
                   itemCount: tasks.length,
                   itemBuilder: (context, index) {
                     final task = tasks[index];
+                    final isHighPriority = task.priority == 3;
+                    final isDone=task.status=='Done';
+
                     return ListTile(
                       title: Text(task.title),
                       subtitle: Column(
@@ -99,7 +102,9 @@ class _TaskListState extends State<TaskList> {
                             },
                           ),
                           IconButton(
-                            icon: Icon(Icons.info),
+
+
+                          icon: isDone ? Icon(Icons.done) : Icon(Icons.info),
                             onPressed: () {
                               Navigator.push(
                                 context,
@@ -111,11 +116,19 @@ class _TaskListState extends State<TaskList> {
                               );
                             },
                           ),
+                          if (isHighPriority) // Show icon for high priority tasks
+                            Icon(
+                              Icons.priority_high,
+                              color: Colors.red,
+                            ),
+
+
                         ],
                       ),
                     );
                   },
                 ),
+
               ),
             ],
           );
