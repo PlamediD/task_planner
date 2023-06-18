@@ -29,4 +29,6 @@ It provides a user-friendly interface with intuitive features to enhance product
 ###### 5.Analytics: Include analytics tracking to gather insights into user behavior and app usage patterns.
 ###### 6.Data Synchronization: Implement data synchronization across devices using a backend server or cloud service, allowing users to access their tasks from multiple devices.
 
+### current state of the app in pictures 
 
+![Screenshot_20230618-111113](https://github.com/PlamediD/task_planner/assets/87151146/47ecb284-3f92-4976-abc9-77ed4d7c33a3)
