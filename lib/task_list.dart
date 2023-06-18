@@ -10,6 +10,15 @@ In addition, it also displays icon next to each task to allow user to perform so
 modify due date, modify priority, etc. )
  */
 
+/*
+Next to work on:
+  - task registration
+  - modify due date
+  - task category ( based on common tags : I will limit it to 3 for simplicity: work, household, personal )
+  - detail screen where user can now see every detail about a task
+  Then work on testing
+
+ */
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -31,6 +40,7 @@ enum SortingOption {
 class _TaskListState extends State<TaskList> {
   bool showAllTasks = false;
   int selectedPriority = 0;
+  String selectedTag = 'All';
   SortingOption selectedSortingOption = SortingOption.Priority;
 
   @override
@@ -43,11 +53,9 @@ class _TaskListState extends State<TaskList> {
             ? taskViewModel.tasks
             : taskViewModel.getTodayTasks();
         final filteredTasks = tasks.where((task) {
-          if (selectedPriority == 0) {
-            return true; // Display all tasks
-          } else {
-            return task.priority == selectedPriority; // Display tasks with the selected priority
-          }
+          bool matchesPriority = selectedPriority == 0 || task.priority == selectedPriority;
+          bool matchesTag = selectedTag == 'All' || task.tags.toLowerCase() == selectedTag.toLowerCase();
+          return matchesPriority && matchesTag;
         }).toList();
 
         if (filteredTasks.isEmpty) {
@@ -104,6 +112,32 @@ class _TaskListState extends State<TaskList> {
                       DropdownMenuItem<int>(
                         value: 3,
                         child: Text('Priority 3'),
+                      ),
+                    ],
+                  ),
+                  DropdownButton<String>(
+                    value: selectedTag,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedTag = value!;
+                      });
+                    },
+                    items: [
+                      DropdownMenuItem<String>(
+                        value: 'All',
+                        child: Text('All Tags'),
+                      ),
+                      DropdownMenuItem<String>(
+                        value: 'Work',
+                        child: Text('Work'),
+                      ),
+                      DropdownMenuItem<String>(
+                        value: 'Household',
+                        child: Text('Household'),
+                      ),
+                      DropdownMenuItem<String>(
+                        value: 'Personal',
+                        child: Text('Personal'),
                       ),
                     ],
                   ),
