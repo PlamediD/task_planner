@@ -32,3 +32,5 @@ It provides a user-friendly interface with intuitive features to enhance product
 ### current state of the app in pictures 
 
 ![Screenshot_20230618-111113](https://github.com/PlamediD/task_planner/assets/87151146/47ecb284-3f92-4976-abc9-77ed4d7c33a3)
+![Screenshot_20230618-111103](https://github.com/PlamediD/task_planner/assets/87151146/108b460b-1aac-41de-acca-c93db557deba)
+![Screenshot_20230618-111042](https://github.com/PlamediD/task_planner/assets/87151146/c09de388-f893-4f46-89bb-fac71011913c)
