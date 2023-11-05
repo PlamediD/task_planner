@@ -83,7 +83,7 @@ class _TaskListState extends State<TaskList> {
                       });
                     },
                     child: Text(
-                      showAllTasks ? "Today's Tasks" : "All Tasks",
+                      showAllTasks ? "Today" : "All Tasks",
                       style: TextStyle(
                         color: Colors.blue,
                       ),
@@ -125,7 +125,7 @@ class _TaskListState extends State<TaskList> {
                     items: [
                       DropdownMenuItem<String>(
                         value: 'All',
-                        child: Text('All Tags'),
+                        child: Text('All tags'),
                       ),
                       DropdownMenuItem<String>(
                         value: 'Work',
@@ -151,11 +151,11 @@ class _TaskListState extends State<TaskList> {
                     items: [
                       DropdownMenuItem<SortingOption>(
                         value: SortingOption.Priority,
-                        child: Text('Sort by Priority'),
+                        child: Text('Priority'),
                       ),
                       DropdownMenuItem<SortingOption>(
                         value: SortingOption.DueDateTime,
-                        child: Text('Sort by Due Date'),
+                        child: Text('Due Date'),
                       ),
                     ],
                   ),
