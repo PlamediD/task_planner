@@ -38,7 +38,7 @@ status can be either 'not started', 'in progress, or 'done'
 5. Task Categories: Implement the ability to create categories or projects to group related tasks together( based on their tags). will limit it to 3 for simplicity: work, household, personal
 ## Additional Challenges
 
-### for advanced learning
+Features I am aiming to work on after completing the basic ones ( listed under 'Features') 
 
 1.Dark Mode: Implement a dark mode feature to provide a different visual theme for users.
 
