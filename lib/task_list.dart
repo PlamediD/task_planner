@@ -26,6 +26,7 @@ import 'package:intl/intl.dart';
 import 'task_view_model.dart';
 import 'delete.dart';
 import 'updateStatus.dart';
+import 'task.dart';
 
 class TaskList extends StatefulWidget {
   @override
@@ -38,6 +39,7 @@ enum SortingOption {
 }
 
 class _TaskListState extends State<TaskList> {
+
   bool showAllTasks = false;
   int selectedPriority = 0;
   String selectedTag = 'All';
@@ -213,6 +215,13 @@ class _TaskListState extends State<TaskList> {
                               );
                             },
                           ),
+                          IconButton(
+                            icon: isDone ? Icon(Icons.done) : Icon(Icons.info),
+                            onPressed: () {
+                              // Call the _showTaskDetails method when the info button is pressed
+                              _showTaskDetails(context, task);
+                            },
+                          ),
                           if (isHighPriority)
                             Icon(
                               Icons.priority_high,
@@ -230,4 +239,35 @@ class _TaskListState extends State<TaskList> {
       },
     );
   }
+  void _showTaskDetails(BuildContext context, Task task) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        final dueDateFormatted = DateFormat('yyyy-MM-dd hh:mm a').format(task.dueDateTime);
+        return AlertDialog(
+          title: Text(task.title),
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('Description: ${task.description}'),
+              Text('Priority: ${task.priority}'),
+              Text('Due Date: $dueDateFormatted'),
+              Text('Tags: ${task.tags}'),
+              Text('Status: ${task.status}'),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
 }
