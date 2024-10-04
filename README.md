@@ -1,7 +1,7 @@
 
 # Task Planner 
 
-Task Tracker is a productivity app that helps users organize and manage their daily tasks.
+PlanIt is a productivity app that helps users organize and manage their daily tasks.
 It provides a user-friendly interface with intuitive features to enhance productivity and efficiency.
 
 Author: Plamedi Diakubama
